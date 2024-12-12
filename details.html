@@ -8,18 +8,27 @@
     </head>
 
     <body>
-        <h1>Schedule for (this day)</h1>
+        <h1>Schedule for (this day and block)</h1>
         <ul>
             <li>(person_name 2) | (time) | (purpose)</li>
             <li>(person_name 2) | (time) | (purpose)</li>
             <li>(person_name 2) | (time) | (purpose)</li>
         </ul>
 
-        <input type="text">
+        <div>
+            <form action="" method="post">
+                <label for="name">Name:</label> <!-- "for=" links the label to the input we want. Labels are pretty. -->
+                <input type="text" name="name" placeholder="Your name" required>
 
+                <label for="time">Time:</label>
+                <input type="time" name="time" required>
 
+                <label for="purpose">Purpose:</label>
+                <input type="text" name="purpose" placeholder="Purpose of visit" required>
 
-
+                <button type="submit">Book Visit</button>
+            </form>
+        </div>
 
 
 
