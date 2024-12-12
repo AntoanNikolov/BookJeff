@@ -18,6 +18,12 @@ li, ol {
     list-style-position: inside;
 }
 
+hr {
+    border: none; 
+    height: 2px; 
+    background: linear-gradient(to right, transparent, #000, transparent); 
+}
+
 .form {
     text-align: center;
 }
