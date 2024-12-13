@@ -1,1 +1,51 @@
-Antoan
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Detailed Schedule</title>
+        <script src="js/init.js"></script>
+        <link type="text/css" rel="stylesheet" href="styles.css">
+        <!-- Link below is for pretty icons. Look up FontAwesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        <div>
+            <a href="/home.html" class="home"><i class="fa-solid fa-house"></i></a>
+        </div>
+
+        <h1>Schedule for (this day and block)</h1>
+        <ol>
+            <li>(person_name 2) | (time) | (purpose)</li>
+            <li>(person_name 2) | (time) | (purpose)</li>
+            <li>(person_name 2) | (time) | (purpose)</li>
+        </ol>
+        
+        <hr>
+        
+        <div class="form">
+            <p>Want to request a visit?</p>
+            <form action="#" method="post">
+                <label for="name">Name:</label> <!-- "for=" links the label to the input we want. Labels are pretty. -->
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="purpose">Purpose:</label>
+                <input type="text" id="purpose" name="purpose" placeholder="Purpose of visit" required>
+
+                <button class="button-21" type="submit">Request visit</button>
+            </form>
+        </div>
+        <p style="text-align: center;">Your requests for this block:</p>
+        <ol>
+            <li>(user_name) | (time) | (purpose)
+                <button class="button-21" type="submit">Delete</button>
+            </li> 
+        </ol>
+        
+        
+
+    </body>
+</html>
