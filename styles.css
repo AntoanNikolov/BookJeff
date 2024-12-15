@@ -80,28 +80,28 @@ hr {
 .homepage {
     text-align: center;
 }
-.office-hours {
+.calander {
     text-align: center;
     margin-top: 20px;
 }
-.office-hours table {
+.calander table {
     width: 80%;
     margin: 40px auto;
     border-collapse: collapse; 
     text-align: center;
     font-size: 1.5rem; 
 }
-.office-hours th, .office-hours td {
+.calander th, .office-hours td {
     padding: 30px;
     border: 2px solid #000;
     vertical-align: middle;
 }
-.office-hours th {
+.calander th {
     background-color: #b8cf8a;
     color: #fff;
     font-size: 2rem;}
 
-.office-hours td {
+.calander td {
     background-color: #F0E68C;
     font-size: 1.25rem;
 }
