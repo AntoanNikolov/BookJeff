@@ -78,5 +78,72 @@ hr {
   box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
 }
 .homepage {
-    text-align:center;
+    text-align: center;
 }
+.office-hours {
+    text-align: center;
+    margin-top: 20px;
+}
+.office-hours table {
+    width: 80%;
+    margin: 40px auto;
+    border-collapse: collapse; 
+    text-align: center;
+    font-size: 1.5rem; 
+}
+.office-hours th, .office-hours td {
+    padding: 30px;
+    border: 2px solid #000;
+    vertical-align: middle;
+}
+.office-hours th {
+    background-color: #b8cf8a;
+    color: #fff;
+    font-size: 2rem;}
+
+.office-hours td {
+    background-color: #F0E68C;
+    font-size: 1.25rem;
+}
+.contact {
+     text-align: center;
+    margin-top: 40px;
+}
+.contact p {
+    font-size: 18px;
+}
+
+.contact a {
+    font-size: 18px;
+    color: #256a97;
+}
+.contact a:hover {
+    color: #004080; 
+}
+.faq {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.faq h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #000; 
+}
+
+.faq ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.faq li {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+
+
