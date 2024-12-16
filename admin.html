@@ -43,9 +43,55 @@
             text-align: center;
             color: #555;
         }
+        #login-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        #login-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        #login-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        #login-form input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #login-form button {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <div id="login-screen">
+        <div id="login-form">
+            <h2>Admin Login</h2>
+            <label for="password">Password:</label>
+            <input type="password" id="password" />
+            <button id="login-button">Login</button>
+        </div>
+    </div>
+
     <header>
         <h1>Admin Appointment Dashboard</h1>
     </header>
@@ -92,6 +138,23 @@
     </footer>
 
     <script>
+        const loginScreen = document.getElementById('login-screen');
+        const loginButton = document.getElementById('login-button');
+        const passwordInput = document.getElementById('password');
+        const correctPassword = 'admin123';
+
+        window.addEventListener('load', () => {
+            loginScreen.style.display = 'flex';
+        });
+
+        loginButton.addEventListener('click', () => {
+            if (passwordInput.value === correctPassword) {
+                loginScreen.style.display = 'none';
+            } else {
+                alert('Incorrect password!');
+            }
+        });
+        
         const approveButtons = document.querySelectorAll('.approve');
         const declineButtons = document.querySelectorAll('.decline');
         const approvedContainer = document.getElementById('approved-appointments');
