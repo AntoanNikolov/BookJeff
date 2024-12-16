@@ -1,62 +1,96 @@
 <!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content = "width=device-width, initial-scale=1.0">
-        <title>Book With Jeff</title>
-        <link rel="stylesheet" href="styles.css">
-        <script src="js/init.js"></script>
-    </head>
-    <body>
-        <header>
-            <h1> Book With Jeff </h1>
-        </header>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book With Jeff</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Book With Jeff</h1>
+    </header>
 
-        <main>
-            <section class="calendar">
-                <h2>Available Office Hours</h2>
-                <table class="calendar">
-            <thead>
-                <tr>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Morning<br>Slot 1 | Slot 2</td>
-                    <td>Morning<br>Slot 1 | Slot 2</td>
-                    <td>Morning<br>Slot 1 | Slot 2</td>
-                    <td>Morning<br>Slot 1 | Slot 2</td>
-                    <td>Morning<br>Slot 1 | Slot 2</td>
-                </tr>
-                <tr>
-                    <td>Archers<br>Slot 1 | Slot 2</td>
-                    <td>Archers<br>Slot 1 | Slot 2</td>
-                    <td>Archers<br>Slot 1 | Slot 2</td>
-                    <td>Archers<br>Slot 1 | Slot 2</td>
-                    <td>Archers<br>Slot 1 | Slot 2</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-            <section class="contact">
-                <h2>Contact Jeff</h2>
-                <p>If you have any questions, feel free to reach out to Jeff:</p>
-                <p>Email: <a href="mailto:jde232@email.vccs.edu">jde232@email.vccs.edu</a></p>
-                <p>Room: #512 (Trailers)</p>
-            </section>
-            <section class="faq">
-                <h2>Frequently Asked Questions(FAQ)</h2>
-                <ul>
-                    <li><strong>Question</strong><br>Answer</li>
-                    <li><strong>Question</strong><br>Answer</li>
-                    <li><strong>Question</strong><br>Answer</li>
-                </ul>
-            </section>
-        </main>
-    </body>
+    <main>
+        <section class="calendar">
+            <h2>Available Office Hours</h2>
+            <table>
+                <thead>
+                    <tr id="day-header">
+                        <!-- Days of the week will be dynamically generated -->
+                    </tr>
+                </thead>
+                <tbody id="calendar">
+                    <tr id="morning-row">
+                        <!-- Morning time slots will be dynamically generated -->
+                    </tr>
+                    <tr id="archers-row">
+                        <!-- Archers time slots will be dynamically generated -->
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="contact">
+            <h2>Contact Jeff</h2>
+            <p>If you have any questions, feel free to reach out to Jeff:</p>
+            <p>Email: <a href="mailto:jde232@email.vccs.edu">jde232@email.vccs.edu</a></p>
+            <p>Room: #512 (Trailers)</p>
+        </section>
+
+        <section class="faq">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <ul>
+                <li><strong>What is the booking process?</strong><br>You can book appointments via the calendar above.</li>
+                <li><strong>What are Jeff's office hours?</strong><br>Office hours are listed in the calendar section.</li>
+                <li><strong>How can I contact Jeff?</strong><br>Email or visit the room listed above.</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        function generateWeeklyCalendar() {
+            const today = new Date();
+            const firstDayOfWeek = new Date(today);
+            firstDayOfWeek.setDate(today.getDate() - today.getDay() + 1); // Monday
+
+            const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+            const dayHeader = document.getElementById('day-header');
+            const morningRow = document.getElementById('morning-row');
+            const archersRow = document.getElementById('archers-row');
+
+            for (let i = 0; i < 5; i++) {
+                const day = new Date(firstDayOfWeek);
+                day.setDate(firstDayOfWeek.getDate() + i);
+
+                // Add days to the header
+                const dayHeaderCell = document.createElement('th');
+                dayHeaderCell.innerHTML = `
+                    <p>${dayNames[i]}</p>
+                    <p>${day.toLocaleDateString()}</p>
+                `;
+                dayHeader.appendChild(dayHeaderCell);
+
+                // Add time slots to the rows
+                const morningCell = document.createElement('td');
+                morningCell.innerHTML = `<p>Morning</p>`;
+                if (day.toDateString() === today.toDateString()) {
+                    morningCell.style.backgroundColor = '#FFEB3B';
+                    morningCell.style.fontWeight = 'bold';
+                }
+                morningRow.appendChild(morningCell);
+
+                const archersCell = document.createElement('td');
+                archersCell.innerHTML = `<p>Archers</p>`;
+                if (day.toDateString() === today.toDateString()) {
+                    archersCell.style.backgroundColor = '#FFEB3B';
+                    archersCell.style.fontWeight = 'bold';
+                }
+                archersRow.appendChild(archersCell);
+            }
+        }
+
+        generateWeeklyCalendar();
+    </script>
+</body>
 </html>
