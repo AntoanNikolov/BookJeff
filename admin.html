@@ -1,1 +1,119 @@
-Larry
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/init.js"></script>
+    <link type="text/css" rel="stylesheet" href="styles.css">
+
+    <title>Admin Appointment Dashboard</title>
+    <style>
+        main {
+            padding: 1rem;
+        }
+        .appointment {
+            background-color: white;
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .appointment-header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .actions button {
+            margin-left: 5px;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .actions .approve {
+            background-color: #28a745;
+            color: white;
+        }
+        .actions .decline {
+            background-color: #dc3545;
+            color: white;
+        }
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Appointment Dashboard</h1>
+    </header>
+    <main>
+        <h2>Pending Appointments</h2>
+        <div id="pending-appointments">
+            <div class="appointment">
+                <div class="appointment-header">
+                    <div>
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Date:</strong> 2024-12-20</p>
+                        <p><strong>Time:</strong> 10:30 AM</p>
+                    </div>
+                    <div class="actions">
+                        <button class="approve">Approve</button>
+                        <button class="decline">Decline</button>
+                    </div>
+                </div>
+                <p><strong>Reason:</strong> Consultation about project timeline.</p>
+            </div>
+
+            <div class="appointment">
+                <div class="appointment-header">
+                    <div>
+                        <p><strong>Name:</strong> Jane Smith</p>
+                        <p><strong>Date:</strong> 2024-12-22</p>
+                        <p><strong>Time:</strong> 1:00 PM</p>
+                    </div>
+                    <div class="actions">
+                        <button class="approve">Approve</button>
+                        <button class="decline">Decline</button>
+                    </div>
+                </div>
+                <p><strong>Reason:</strong> Follow-up on service request.</p>
+            </div>
+        </div>
+        <h2>Approved Appointments</h2>
+        <div id="approved-appointments">
+            <!-- Approved appointments will appear here -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Admin Dashboard</p>
+    </footer>
+
+    <script>
+        const approveButtons = document.querySelectorAll('.approve');
+        const declineButtons = document.querySelectorAll('.decline');
+        const approvedContainer = document.getElementById('approved-appointments');
+
+        approveButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const appointment = button.closest('.appointment');
+                const clone = appointment.cloneNode(true);
+                clone.querySelector('.actions').remove();
+                approvedContainer.appendChild(clone);
+                alert('Appointment approved!');
+                appointment.remove();
+            });
+        });
+
+        declineButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const appointment = button.closest('.appointment');
+                alert('Appointment declined!');
+                appointment.remove();
+            });
+        });
+    </script>
+</body>
+</html>
