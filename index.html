@@ -73,7 +73,7 @@
 
                 // Add time slots to the rows
                 const morningCell = document.createElement('td');
-                morningCell.innerHTML = `<p>Morning</p>`;
+                morningCell.innerHTML = `<a href="details.html"><p>Morning</p></a>`;
                 if (day.toDateString() === today.toDateString()) {
                     morningCell.style.backgroundColor = '#FFEB3B';
                     morningCell.style.fontWeight = 'bold';
@@ -81,7 +81,7 @@
                 morningRow.appendChild(morningCell);
 
                 const archersCell = document.createElement('td');
-                archersCell.innerHTML = `<p>Archers</p>`;
+                archersCell.innerHTML = `<a href="details.html"><p>Archers</p></a>`;
                 if (day.toDateString() === today.toDateString()) {
                     archersCell.style.backgroundColor = '#FFEB3B';
                     archersCell.style.fontWeight = 'bold';
