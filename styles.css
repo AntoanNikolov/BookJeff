@@ -88,20 +88,20 @@ hr {
 }
 .calendar table {
     width: 80%;
-    margin: 40px auto;
+    margin: 5% auto;
     border-collapse: collapse; 
     text-align: center;
     font-size: 1.5rem; 
 }
 .calendar th, .calendar td {
-    padding: 30px;
+    padding: 10px 30px 10px 30px;
     border: 2px solid #000;
     vertical-align: middle;
 }
 .calendar th {
     background-color: #b8cf8a;
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .calendar td {
@@ -150,5 +150,11 @@ hr {
     color: #333;
 }
 
+.calendar td:hover {
+    background-color: #FFD700; /* Gold background on hover */
+    color: #000; /* Change text color to black */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
 
 

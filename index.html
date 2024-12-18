@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book With Jeff</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="js/init.js"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script>
+        function init() {
+        var loc = window.location.href;
+        var HTMLvalidLinkStr = 'http://validator.w3.org/check?uri=' + loc;
+        var CSSvalidLinkStr = 'http://jigsaw.w3.org/css-validator/validator?uri=' +
+                                loc + '?profile=css3';
+        document.getElementById("vLink1").setAttribute("href", HTMLvalidLinkStr);
+        document.getElementById("vLink2").setAttribute("href", CSSvalidLinkStr);
+        }
+        window.onload = init;
+        </script> 
 </head>
 <body>
     <header>
@@ -17,16 +28,31 @@
             <h2>Available Office Hours</h2>
             <table>
                 <thead>
-                    <tr id="day-header">
-                        <!-- Days of the week will be dynamically generated -->
+                    <tr id="week-1-header">
+                        <!-- Week 1 days dynamically generated -->
                     </tr>
                 </thead>
-                <tbody id="calendar">
-                    <tr id="morning-row">
-                        <!-- Morning time slots will be dynamically generated -->
+                <tbody id="calendar-week-1">
+                    <tr id="morning-row-week-1">
+                        <!-- Week 1 Morning time slots -->
                     </tr>
-                    <tr id="archers-row">
-                        <!-- Archers time slots will be dynamically generated -->
+                    <tr id="archers-row-week-1">
+                        <!-- Week 1 Archers time slots -->
+                    </tr>
+                </tbody>
+                </table>
+                <table>
+                <thead>
+                    <tr id="week-2-header">
+                        <!-- Week 2 days dynamically generated -->
+                    </tr>
+                </thead>
+                <tbody id="calendar-week-2">
+                    <tr id="morning-row-week-2">
+                        <!-- Week 2 Morning time slots -->
+                    </tr>
+                    <tr id="archers-row-week-2">
+                        <!-- Week 2 Archers time slots -->
                     </tr>
                 </tbody>
             </table>
@@ -46,48 +72,67 @@
                 <li><strong>What are Jeff's office hours?</strong><br>Office hours are listed in the calendar section.</li>
                 <li><strong>How can I contact Jeff?</strong><br>Email or visit the room listed above.</li>
             </ul>
+            <footer>
+            <h5>
+            Copyright &copy; All rights reserved by Lary
+            </h5>
+            <a id="vLink1"><strong> HTML </strong> Valid! </a> |
+            <a id="vLink2"><strong> CSS </strong> Valid! </a>
+            </footer>
         </section>
+        
     </main>
-
+    <!--To make Calendar Dynamic-->
     <script>
         function generateWeeklyCalendar() {
             const today = new Date();
             const firstDayOfWeek = new Date(today);
-            firstDayOfWeek.setDate(today.getDate() - today.getDay() + 1); // Monday
+            firstDayOfWeek.setDate(today.getDate() - today.getDay() + 1); // Start from Monday of current week
 
             const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-            const dayHeader = document.getElementById('day-header');
-            const morningRow = document.getElementById('morning-row');
-            const archersRow = document.getElementById('archers-row');
+            
+            // Week 1 Headers and Slots
+            const week1Header = document.getElementById('week-1-header');
+            const morningRowWeek1 = document.getElementById('morning-row-week-1');
+            const archersRowWeek1 = document.getElementById('archers-row-week-1');
 
-            for (let i = 0; i < 5; i++) {
+            // Week 2 Headers and Slots
+            const week2Header = document.getElementById('week-2-header');
+            const morningRowWeek2 = document.getElementById('morning-row-week-2');
+            const archersRowWeek2 = document.getElementById('archers-row-week-2');
+
+            for (let i = 0; i < 10; i++) { // Loop through 2 weeks (10 weekdays)
                 const day = new Date(firstDayOfWeek);
                 day.setDate(firstDayOfWeek.getDate() + i);
 
-                // Add days to the header
-                const dayHeaderCell = document.createElement('th');
-                dayHeaderCell.innerHTML = `
-                    <p>${dayNames[i]}</p>
+                const headerCell = document.createElement('th');
+                headerCell.innerHTML = `
+                    <p>${dayNames[i % 5]}</p>
                     <p>${day.toLocaleDateString()}</p>
                 `;
-                dayHeader.appendChild(dayHeaderCell);
 
-                // Add time slots to the rows
                 const morningCell = document.createElement('td');
                 morningCell.innerHTML = `<a href="details.html"><p>Morning</p></a>`;
                 if (day.toDateString() === today.toDateString()) {
-                    morningCell.style.backgroundColor = '#FFEB3B';
                     morningCell.style.fontWeight = 'bold';
                 }
-                morningRow.appendChild(morningCell);
 
                 const archersCell = document.createElement('td');
                 archersCell.innerHTML = `<a href="details.html"><p>Archers</p></a>`;
                 if (day.toDateString() === today.toDateString()) {
-                    archersCell.style.backgroundColor = '#FFEB3B';
                     archersCell.style.fontWeight = 'bold';
                 }
-                archersRow.appendChild(archersCell);
+
+                // Append to appropriate week
+                if (i < 5) {
+                    week1Header.appendChild(headerCell);
+                    morningRowWeek1.appendChild(morningCell);
+                    archersRowWeek1.appendChild(archersCell);
+                } else {
+                    week2Header.appendChild(headerCell);
+                    morningRowWeek2.appendChild(morningCell);
+                    archersRowWeek2.appendChild(archersCell);
+                }
             }
         }
 
